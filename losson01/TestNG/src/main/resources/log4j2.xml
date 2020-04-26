@@ -1,0 +1,16 @@
+<Configuration monitorInterval="100">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{[%d{HH:mm:ss.SSS}] %d{ISO8601} %5p %X{DiagnosticContext} %C{1}.%M %m%n}{FATAL=red blink, ERROR=red blink, WARN=yellow bold, INFO=black, DEBUG=green bold, TRACE=blue}"/>
+        </Console>
+        <File name="File1" fileName="./logs/log.log" bufferedIO="false" advertiseURI="file://path/to/output.log" advertise="true">
+            <PatternLayout pattern="%[%d{HH:mm:ss.SSS}] %d{ISO8601} %5p %X{DiagnosticContext} %C{1}.%M %m%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="TestNGTest" level="info">
+            <AppenderRef ref="File1"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+    </Loggers>
+</Configuration>
